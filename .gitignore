@@ -1,0 +1,3 @@
+.env
+*.pyc
+hseling_data_generator/
