@@ -22,7 +22,7 @@ services:
   environment: *common-variables
   volumes:
     - type: bind
-      source: ./hseling-data-generator
+      source: ./hseling-data-generator/api
       target: /data
 
  hse-web-web:
@@ -36,7 +36,7 @@ services:
   environment: *common-variables
   volumes:
     - type: bind
-      source: ./hseling-data-generator
+      source: ./hseling-data-generator/web
       target: /data
 
  mysql:
@@ -44,3 +44,7 @@ services:
   command: --default-authentication-plugin=mysql_native_password
   restart: always
   environment: *common-variables
+  volumes:
+    - type: bind
+      source: ./hseling-data-generator/mysql
+      target: /var/lib/mysql
