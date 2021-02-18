@@ -1,3 +1,6 @@
 .env
 *.pyc
-hseling_data_generator/
+hseling-data-generator/
+!hseling-data-generator/app/.gitkeep
+!hseling-data-generator/mysql/.gitkeep
+!hseling-data-generator/web/.gitkeep
