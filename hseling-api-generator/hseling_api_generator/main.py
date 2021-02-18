@@ -62,7 +62,7 @@ def do_process_task(file_ids_list):
 @app.route('/healthz')
 def healthz():
     app.logger.info('Health checked')
-    return jsonify({"status": "ok", "message": "Application Generator"})
+    return jsonify({"status": "ok", "message": "Application Generator - RPC"})
 
 
 

@@ -6,8 +6,8 @@ x-common-variables: &common-variables
  MYSQL_USER: mysql
  MYSQL_PASSWORD: mysql123
  MYSQL_DATABASE: hse-api-database
- HSELING_RPC_ENDPOINT: http://localhost:5000/rpc
- HSELING_API_ENDPOINT: http://localhost:5000/api
+ HSELING_RPC_ENDPOINT: http://hse-api-web:80/rpc/
+ HSELING_API_ENDPOINT: http://hse-api-web:80/api/
  RESTRICTED_MODE: 0
 
 services:
@@ -22,11 +22,13 @@ services:
   environment: *common-variables
   volumes:
     - type: bind
-      source: ./hseling_data_generator
+      source: ./hseling-data-generator
       target: /data
 
  hse-web-web:
-  build: ./hseling-web-generator
+  build:
+    context: .
+    dockerfile: hseling-web-generator/Dockerfile
   ports:
     - "8000:80"
   depends_on:
@@ -34,7 +36,7 @@ services:
   environment: *common-variables
   volumes:
     - type: bind
-      source: ./hseling_data_generator
+      source: ./hseling-data-generator
       target: /data
 
  mysql:
